@@ -2,10 +2,10 @@
  * DATA *
  **********/
 
-const sixes = [];
-const doubleSixes = [];
-const twelves = [];
-const twenties = [];
+let sixes = [];
+let doubleSixes = [];
+let twelves = [];
+let twenties = [];
 
 /********************
  * HELPER FUNCTIONS *
@@ -29,47 +29,57 @@ const sortByNumber = function(arr) {
 /*******************
  * YOUR CODE BELOW *
  *******************/
-// D6 defult display
-const d6Mean = document.querySelector('#d6-rolls-mean');
-d6Mean.innerText = 'NA'
-const d6Median = document.querySelector('#d6-rolls-median');
-d6Median.innerText = 'NA'
-const d6Mode = document.querySelector('#d6-rolls-mode');
-d6Mode.innerText = 'NA'
-const d6Img = document.querySelector('#d6-roll')
-d6Img.src = 'images/start/d6.png'
+  // D6 defult display
+  const d6Mean = document.querySelector('#d6-rolls-mean');
+  const d6Median = document.querySelector('#d6-rolls-median');
+  const d6Mode = document.querySelector('#d6-rolls-mode');
+  const d6Img = document.querySelector('#d6-roll')
 
-// 2D6 defult display
-const doubleD6Mean = document.querySelector('#double-d6-rolls-mean');
-doubleD6Mean.innerText = 'NA'
-const doubleD6Median = document.querySelector('#double-d6-rolls-median');
-doubleD6Median.innerText = 'NA'
-const doubleD6Mode = document.querySelector('#double-d6-rolls-mode');
-doubleD6Mode.innerText = 'NA'
-const doubleD6Img1 = document.querySelector('#double-d6-roll-1')
-const doubleD6Img2 = document.querySelector('#double-d6-roll-2')
-doubleD6Img1.src = 'images/start/d6.png'
-doubleD6Img2.src = 'images/start/d6.png'
+  // 2D6 defult display
+  const doubleD6Mean = document.querySelector('#double-d6-rolls-mean');
+  const doubleD6Median = document.querySelector('#double-d6-rolls-median');
+  const doubleD6Mode = document.querySelector('#double-d6-rolls-mode');
+  const doubleD6Img1 = document.querySelector('#double-d6-roll-1')
+  const doubleD6Img2 = document.querySelector('#double-d6-roll-2')
 
-// D12 defult display
-const d12Mean = document.querySelector('#d12-rolls-mean');
-d12Mean.innerText = 'NA'
-const d12Median = document.querySelector('#d12-rolls-median');
-d12Median.innerText = 'NA'
-const d12Mode = document.querySelector('#d12-rolls-mode');
-d12Mode.innerText = 'NA'
-const d12Img = document.querySelector('#d12-roll')
-d12Img.src = 'images/start/d12.jpeg'
+  // D12 defult display
+  const d12Mean = document.querySelector('#d12-rolls-mean');
+  const d12Median = document.querySelector('#d12-rolls-median');
+  const d12Mode = document.querySelector('#d12-rolls-mode');
+  const d12Img = document.querySelector('#d12-roll')
 
-// D20 defult display
-const d20Mean = document.querySelector('#d20-rolls-mean');
-d20Mean.innerText = 'NA'
-const d20Median = document.querySelector('#d20-rolls-median');
-d20Median.innerText = 'NA'
-const d20Mode = document.querySelector('#d20-rolls-mode');
-d20Mode.innerText = 'NA'
-const d20Img = document.querySelector('#d20-roll')
-d20Img.src = 'images/start/d20.jpg'
+  // D20 defult display
+  const d20Mean = document.querySelector('#d20-rolls-mean');
+  const d20Median = document.querySelector('#d20-rolls-median');
+  const d20Mode = document.querySelector('#d20-rolls-mode');
+  const d20Img = document.querySelector('#d20-roll')
+function defaultDisplay(){
+  
+  d6Mean.innerText = 'NA'
+  d6Median.innerText = 'NA'
+  d6Mode.innerText = 'NA'
+  d6Img.src = 'images/start/d6.png'
+
+  // 2D6 defult display
+  doubleD6Mean.innerText = 'NA'
+  doubleD6Median.innerText = 'NA'
+  doubleD6Mode.innerText = 'NA'
+  doubleD6Img1.src = 'images/start/d6.png'
+  doubleD6Img2.src = 'images/start/d6.png'
+
+  // D12 defult display
+  d12Mean.innerText = 'NA'
+  d12Median.innerText = 'NA'
+  d12Mode.innerText = 'NA'
+  d12Img.src = 'images/start/d12.jpeg'
+
+  // D20 defult display
+  d20Mean.innerText = 'NA'
+  d20Median.innerText = 'NA'
+  d20Mode.innerText = 'NA'
+  d20Img.src = 'images/start/d20.jpg'
+}
+defaultDisplay()
 
 /*******************
  * EVENT LISTENERS *
@@ -146,6 +156,8 @@ reset.addEventListener('click', function(){
   doubleSixes = [];
   twelves = [];
   twenties = [];
+  
+  defaultDisplay()
 })
 
 
