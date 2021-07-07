@@ -29,28 +29,167 @@ const sortByNumber = function(arr) {
 /*******************
  * YOUR CODE BELOW *
  *******************/
+// D6 defult display
+const d6Mean = document.querySelector('#d6-rolls-mean');
+d6Mean.innerText = 'NA'
+const d6Median = document.querySelector('#d6-rolls-median');
+d6Median.innerText = 'NA'
+const d6Mode = document.querySelector('#d6-rolls-mode');
+d6Mode.innerText = 'NA'
+const d6Img = document.querySelector('#d6-roll')
+d6Img.src = 'images/start/d6.png'
 
+// 2D6 defult display
+const doubleD6Mean = document.querySelector('#double-d6-rolls-mean');
+doubleD6Mean.innerText = 'NA'
+const doubleD6Median = document.querySelector('#double-d6-rolls-median');
+doubleD6Median.innerText = 'NA'
+const doubleD6Mode = document.querySelector('#double-d6-rolls-mode');
+doubleD6Mode.innerText = 'NA'
+const doubleD6Img1 = document.querySelector('#double-d6-roll-1')
+const doubleD6Img2 = document.querySelector('#double-d6-roll-2')
+doubleD6Img1.src = 'images/start/d6.png'
+doubleD6Img2.src = 'images/start/d6.png'
 
+// D12 defult display
+const d12Mean = document.querySelector('#d12-rolls-mean');
+d12Mean.innerText = 'NA'
+const d12Median = document.querySelector('#d12-rolls-median');
+d12Median.innerText = 'NA'
+const d12Mode = document.querySelector('#d12-rolls-mode');
+d12Mode.innerText = 'NA'
+const d12Img = document.querySelector('#d12-roll')
+d12Img.src = 'images/start/d12.jpeg'
+
+// D20 defult display
+const d20Mean = document.querySelector('#d20-rolls-mean');
+d20Mean.innerText = 'NA'
+const d20Median = document.querySelector('#d20-rolls-median');
+d20Median.innerText = 'NA'
+const d20Mode = document.querySelector('#d20-rolls-mode');
+d20Mode.innerText = 'NA'
+const d20Img = document.querySelector('#d20-roll')
+d20Img.src = 'images/start/d20.jpg'
 
 /*******************
  * EVENT LISTENERS *
  *******************/
 
+//rolling d6
+const sixRoller = document.querySelector('#d6-roll');
+sixRoller.addEventListener('click', function(){
+  const sixResult = document.querySelector('img#d6-roll');
+  const d6 = getRandomNumber(6);
+  sixResult.src = `images/d6/${d6}.png`
+  sixes.push(d6);
+  console.log(sixes);
+  d6Mean.innerText = getMean(sixes)
+  d6Median.innerText = getMean(sixes)
+  d6Mode.innerText = getMode(sixes)
+})
 
+
+//rolling 2d6
+const doubleSixesRoller1 = document.querySelector('#double-d6-roll-1');
+const doubleSixesRoller2 = document.querySelector('#double-d6-roll-2');
+doubleSixesRoller1.addEventListener('click', doubleD6Roll)
+doubleSixesRoller2.addEventListener('click', doubleD6Roll)
+
+function doubleD6Roll(){
+  const doubleSixesResult1 = document.querySelector('img#double-d6-roll-1');
+  const doubleSixesResult2 = document.querySelector('img#double-d6-roll-2');
+  const d61 = getRandomNumber(6);
+  const d62 = getRandomNumber(6);
+  doubleSixesResult1.src = `images/d6/${d61}.png`
+  doubleSixesResult2.src = `images/d6/${d62}.png`
+  let rolled2D6 = d61 + d62
+  doubleSixes.push(rolled2D6);
+  console.log(doubleSixes);
+  doubleD6Mean.innerText = getMean(doubleSixes)
+  doubleD6Median.innerText = getMean(doubleSixes)
+  doubleD6Mode.innerText = getMode(doubleSixes)
+}
+
+//rolling d12
+const twelveRoller = document.querySelector('#d12-roll');
+twelveRoller.addEventListener('click', function(){
+  const twelveResult = document.querySelector('img#d12-roll');
+  const d12 = getRandomNumber(12);
+  twelveResult.src = `images/numbers/${d12}.png`
+  twelves.push(d12);
+  console.log(twelves);
+  d12Mean.innerText = getMean(twelves)
+  d12Median.innerText = getMean(twelves)
+  d12Mode.innerText = getMode(twelves)
+})
+
+//rolling d20
+const twentiesRoller = document.querySelector('#d20-roll');
+twentiesRoller.addEventListener('click', function(){
+  const twentiesResult = document.querySelector('img#d20-roll');
+  const d20 = getRandomNumber(20);
+  twentiesResult.src = `images/numbers/${d20}.png`
+  twenties.push(d20);
+  console.log(twenties);
+  d20Mean.innerText = getMean(twenties)
+  d20Median.innerText = getMean(twenties)
+  d20Mode.innerText = getMode(twenties)
+})
 
 
 /******************
  * RESET FUNCTION *
  ******************/
-
-
-
-/****************************
- * CLICK HANDLING FUNCTIONS *
-****************************/
+const reset = document.querySelector('#reset-button');
+reset.addEventListener('click', function(){
+  sixes = [];
+  doubleSixes = [];
+  twelves = [];
+  twenties = [];
+})
 
 
 
 /****************
  * MATH SECTION *
  ****************/
+
+function getMean(arr){
+  let result = 0
+  for( a of arr){
+    result += a
+  }
+  return (result/arr.length).toFixed(2)
+}
+
+function getMedian(arr){
+  let result = 0
+  let temp = Math.ceil(arr.length/2)
+  if(arr.length %2 == 0){
+    result = arr[temp] + arr[temp-1]
+  }
+  else{
+    result = arr[temp]
+  }
+  return result.toFixed(2)
+}
+
+function getMode(arr){
+  let result = 0
+  let max = 0
+  for(let i=0; i<arr.length; i++){
+      let counter = 0
+      for(let j=i+1; j<arr.length; j++){
+          if(arr[j] == arr[i]){
+          counter++
+          }
+      }
+      if (counter > max){
+          result = arr[i]
+          max = counter
+      }
+      arr = arr.filter(a => a != arr[i])
+      i--
+  }
+  return result.toFixed(2)
+}
