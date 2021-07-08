@@ -29,33 +29,29 @@ const sortByNumber = function(arr) {
 /*******************
  * YOUR CODE BELOW *
  *******************/
-  // D6 defult display
   const d6Mean = document.querySelector('#d6-rolls-mean');
   const d6Median = document.querySelector('#d6-rolls-median');
   const d6Mode = document.querySelector('#d6-rolls-mode');
   const d6Img = document.querySelector('#d6-roll')
 
-  // 2D6 defult display
   const doubleD6Mean = document.querySelector('#double-d6-rolls-mean');
   const doubleD6Median = document.querySelector('#double-d6-rolls-median');
   const doubleD6Mode = document.querySelector('#double-d6-rolls-mode');
   const doubleD6Img1 = document.querySelector('#double-d6-roll-1')
   const doubleD6Img2 = document.querySelector('#double-d6-roll-2')
 
-  // D12 defult display
   const d12Mean = document.querySelector('#d12-rolls-mean');
   const d12Median = document.querySelector('#d12-rolls-median');
   const d12Mode = document.querySelector('#d12-rolls-mode');
   const d12Img = document.querySelector('#d12-roll')
 
-  // D20 defult display
   const d20Mean = document.querySelector('#d20-rolls-mean');
   const d20Median = document.querySelector('#d20-rolls-median');
   const d20Mode = document.querySelector('#d20-rolls-mode');
   const d20Img = document.querySelector('#d20-roll')
 
 function defaultDisplay(){
-  
+  //D6 defult display
   d6Mean.innerText = 'NA'
   d6Median.innerText = 'NA'
   d6Mode.innerText = 'NA'
@@ -107,7 +103,7 @@ function rollD6(){
   sixes.push(d6);
   console.log(sixes);
   d6Mean.innerText = getMean(sixes)
-  d6Median.innerText = getMean(sixes)
+  d6Median.innerText = getMedian(sixes)
   d6Mode.innerText = getMode(sixes)
 }
 
@@ -129,7 +125,7 @@ function doubleD6Roll(){
   doubleSixes.push(rolled2D6);
   console.log(doubleSixes);
   doubleD6Mean.innerText = getMean(doubleSixes)
-  doubleD6Median.innerText = getMean(doubleSixes)
+  doubleD6Median.innerText = getMedian(doubleSixes)
   doubleD6Mode.innerText = getMode(doubleSixes)
 }
 
@@ -142,7 +138,7 @@ twelveRoller.addEventListener('click', function(){
   twelves.push(d12);
   console.log(twelves);
   d12Mean.innerText = getMean(twelves)
-  d12Median.innerText = getMean(twelves)
+  d12Median.innerText = getMedian(twelves)
   d12Mode.innerText = getMode(twelves)
 })
 
@@ -155,7 +151,7 @@ twentiesRoller.addEventListener('click', function(){
   twenties.push(d20);
   console.log(twenties);
   d20Mean.innerText = getMean(twenties)
-  d20Median.innerText = getMean(twenties)
+  d20Median.innerText = getMedian(twenties)
   d20Mode.innerText = getMode(twenties)
 })
 
@@ -188,10 +184,13 @@ function getMean(arr){
 }
 
 function getMedian(arr){
-  let result = 0
+  let result = arr[0]
   let temp = Math.ceil(arr.length/2)
   if(arr.length %2 == 0){
     result = arr[temp] + arr[temp-1]
+  }
+  else if (arr.length === 1){
+    return result
   }
   else{
     result = arr[temp]
