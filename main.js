@@ -53,6 +53,7 @@ const sortByNumber = function(arr) {
   const d20Median = document.querySelector('#d20-rolls-median');
   const d20Mode = document.querySelector('#d20-rolls-mode');
   const d20Img = document.querySelector('#d20-roll')
+
 function defaultDisplay(){
   
   d6Mean.innerText = 'NA'
@@ -87,16 +88,28 @@ defaultDisplay()
 
 //rolling d6
 const sixRoller = document.querySelector('#d6-roll');
-sixRoller.addEventListener('click', function(){
+sixRoller.addEventListener('click', rollD6)
+
+function rollD6(){
   const sixResult = document.querySelector('img#d6-roll');
   const d6 = getRandomNumber(6);
+  // let counter = 0
+  // setTimeout(function (){
+  //   while(counter <= 10){
+  //   const randD6 = getRandomNumber(6)
+  //   sixResult.src = `images/d6/${randD6}.png`
+  //   console.log(counter, '-', randD6)
+  //   counter++
+  //   }
+    
+  // },200)
   sixResult.src = `images/d6/${d6}.png`
   sixes.push(d6);
   console.log(sixes);
   d6Mean.innerText = getMean(sixes)
   d6Median.innerText = getMean(sixes)
   d6Mode.innerText = getMode(sixes)
-})
+}
 
 
 //rolling 2d6
@@ -187,7 +200,7 @@ function getMedian(arr){
 }
 
 function getMode(arr){
-  let result = 0
+  let result = arr[0]
   let max = 0
   for(let i=0; i<arr.length; i++){
       let counter = 0
