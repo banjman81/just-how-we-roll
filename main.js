@@ -187,10 +187,10 @@ function getMedian(arr){
   let result = arr[0]
   let temp = Math.ceil(arr.length/2)
   if(arr.length %2 == 0){
-    result = arr[temp] + arr[temp-1]
+    result = arr[temp] + arr[temp-1]/2
   }
   else if (arr.length === 1){
-    return result
+    return result.toFixed(2)
   }
   else{
     result = arr[temp]
