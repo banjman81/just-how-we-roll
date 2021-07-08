@@ -184,6 +184,8 @@ function getMean(arr){
 }
 
 function getMedian(arr){
+  arr = arr.sort()
+  console.log(arr, 'sorted')
   let result = arr[0]
   let temp = Math.floor(arr.length/2)
   if(arr.length %2 == 0){
